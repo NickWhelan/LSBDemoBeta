@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
-using System.Collections;
+using UnityEngine.UI;
+
 [RequireComponent(typeof(CharacterController))]
 public class Player : MonoBehaviour {
     public int playerId;
@@ -12,10 +13,13 @@ public class Player : MonoBehaviour {
     // Reference to controller used to move the player
     public CharacterController cc;
     public GameObject player;
+    public Canvas playerCanvas;
+    public Camera mainCamera;
 
     // Use this for initialization
     void Start()
     {
+        playerCanvas = GetComponentInChildren<Canvas>();
         // Grab a component and keep a reference to it
         cc = GetComponent<CharacterController>();
     }
@@ -35,6 +39,7 @@ public class Player : MonoBehaviour {
         moveDirection *= speed;
         // Applies the Move action using the direction which had speed applied
         cc.Move(moveDirection * Time.deltaTime);
+        playerCanvas.transform.rotation = Quaternion.LookRotation(Vector3.forward) * Quaternion.Euler(45, 0, 0);
 
     } // closes Update
 
