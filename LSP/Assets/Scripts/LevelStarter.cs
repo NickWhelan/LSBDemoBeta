@@ -9,21 +9,25 @@ public class LevelStarter : MonoBehaviour {
     public Slider loadingSlider;
     public Text progressText;
     private int loadingProgress;
-
+    public Text pressStart;
+    public int numberOfPlayers, numberReadyPlayers;
 	// Use this for initialization
 	void Start () {
+        pressStart.enabled = false;
         loadingPanel.SetActive(false);
-
-	}
-
+    }
     private void Update()
     {
         ///Check for collision between two rooms
         ///if true, load roomba
-        if(Input.GetKeyDown(KeyCode.Return))
-        {
-            StartGame();
+        if (numberReadyPlayers == numberOfPlayers) {
+            pressStart.enabled = true;
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                StartGame();
+            }
         }
+        
         
     }
 
