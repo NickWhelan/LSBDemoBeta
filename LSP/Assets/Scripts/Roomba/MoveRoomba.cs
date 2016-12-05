@@ -4,7 +4,7 @@ using System.Collections;
 public class MoveRoomba : MonoBehaviour
 {
     public bool Move = false;
-    public bool Forward, Left, Right, Back;
+    public bool Forward, Left, Right, Back,TwoBothInTriggers;
     public GameObject customOrigin;
     // Use this for initialization
     void Start()
@@ -18,19 +18,32 @@ public class MoveRoomba : MonoBehaviour
         {
             if (Forward)
             {
-                transform.position += new Vector3(0, 0, 1);
+                transform.position += transform.forward;
             }
             if (Left)
             {
-                transform.RotateAround(customOrigin.transform.position, new Vector3(0, 1, 0), -1);
+                if (!TwoBothInTriggers)
+                {
+                    transform.RotateAround(customOrigin.transform.position + new Vector3(1,0,0), new Vector3(0, 1, 0), -1);
+                }
+                else {
+                    transform.RotateAround(customOrigin.transform.position, new Vector3(0, 1, 0), -1);
+                }
             }
             if (Right)
             {
-                transform.RotateAround(customOrigin.transform.position, new Vector3(0, 1, 0), 1);
+                if (!TwoBothInTriggers)
+                {
+                    transform.RotateAround(customOrigin.transform.position + new Vector3(-1, 0, 0), new Vector3(0, 1, 0), 1);
+                }
+                else
+                {
+                    transform.RotateAround(customOrigin.transform.position, new Vector3(0, 1, 0), 1);
+                }
             }
             if (Back)
             {
-                transform.position += new Vector3(0, 0, -1);
+                transform.position += transform.forward*-1;
             }
         }
     }
