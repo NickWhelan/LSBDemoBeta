@@ -5,6 +5,7 @@ public class MoveRoomba : MonoBehaviour
 {
     public bool Move = false;
     public bool Forward, Left, Right, Back;
+    public GameObject customOrigin;
     // Use this for initialization
     void Start()
     {
@@ -21,11 +22,11 @@ public class MoveRoomba : MonoBehaviour
             }
             if (Left)
             {
-                transform.Rotate(0, -1, 0);
+                transform.RotateAround(customOrigin.transform.position, new Vector3(0, 1, 0), -1);
             }
             if (Right)
             {
-                transform.Rotate(0, 1, 0);
+                transform.RotateAround(customOrigin.transform.position, new Vector3(0, 1, 0), 1);
             }
             if (Back)
             {
