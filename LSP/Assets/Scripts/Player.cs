@@ -39,7 +39,7 @@ public class Player : MonoBehaviour {
         moveDirection *= speed;
         // Applies the Move action using the direction which had speed applied
         cc.Move(moveDirection * Time.deltaTime);
-        playerCanvas.transform.rotation = Quaternion.LookRotation(Vector3.forward) * Quaternion.Euler(45, 0, 0);
+	//	playerCanvas.transform.forward;
 
     } // closes Update
 
