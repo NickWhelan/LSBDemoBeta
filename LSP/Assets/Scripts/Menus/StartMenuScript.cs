@@ -29,6 +29,12 @@ public class StartMenuScript : MonoBehaviour {
         StartCoroutine(LoadScreen("Roomba"));
     }
 
+    public void PrototypeMenu()
+    {
+        LoadPanelScreen();
+        StartCoroutine(LoadScreen("Main"));
+    }
+
     //Panel Convenience
     void LoadPanelScreen()
     {
