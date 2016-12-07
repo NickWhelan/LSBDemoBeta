@@ -16,6 +16,7 @@ public class LevelStarter : MonoBehaviour {
         pressStart.enabled = false;
         loadingPanel.SetActive(false);
     }
+
     private void Update()
     {
         ///Check for collision between two rooms

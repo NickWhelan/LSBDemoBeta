@@ -15,6 +15,7 @@ public class StartMenuScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         loadingPanel.SetActive(false);
+        DontDestroyOnLoad(gameObject);
 	}
 
     public void QuitGame()
