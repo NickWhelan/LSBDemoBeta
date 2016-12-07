@@ -13,7 +13,7 @@ public class Zones : MonoBehaviour {
 	}
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log(gameObject.tag);
+        //Debug.Log(gameObject.tag);
         if (other.tag.StartsWith("Player"))
         {
             Roomba.Move = true;

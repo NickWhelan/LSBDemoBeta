@@ -16,13 +16,11 @@ public class Vacuum : MonoBehaviour
         {
             if (gameObject.tag == "FirstRoomba")
             {
-                Debug.Log("ZHU LI DO THE THING");
                 gm.UpdateScore(0);
                 Destroy(c.gameObject);
             }
             if (gameObject.tag == "SecondRoomba")
             {
-                Debug.Log("ZHU LI DO THE OTHER THING");
                 gm.UpdateScore(1);
                 Destroy(c.gameObject);
             }

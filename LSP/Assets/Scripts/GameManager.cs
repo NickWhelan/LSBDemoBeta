@@ -46,7 +46,6 @@ public class GameManager : MonoBehaviour {
             {
                 if (seconds <= 0 && minutes <= 0)
                 {
-                    Debug.Log("Game should end here");
                     paused = true;
                     timerText.text = "";
                     LoadScorePanel();

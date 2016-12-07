@@ -34,6 +34,7 @@ public class Player : MonoBehaviour {
 
             // Use the up and down keys to move the player along the Z-axis
             moveDirection = new Vector3(Input.GetAxis("Horizontal" + (playerId + 1)), 0, Input.GetAxis("Vertical" + (playerId + 1)));
+            
             // Rotate the transform the Script is awttached to using to left and right keys
             //transform.Rotate(0, rotateSpeedX * 3, 0);
             // Translates the local coordinates to world coordinates
