@@ -6,7 +6,10 @@ public class Player : MonoBehaviour {
     public int playerId;
     // Variables to control speeds for movements
     public float speed = 6.0f;
-   
+
+    //Animator component for animations
+    private Animator anim;
+
     // Used by Move() to move the player in a certain direction
     Vector3 moveDirection = Vector3.zero;
 
@@ -14,13 +17,18 @@ public class Player : MonoBehaviour {
     public CharacterController cc;
     public GameObject player;
     public Canvas playerCanvas;
-
+    
     public GameManager gm;
+
+
+
 
     // Use this for initialization
     void Start()
     {
+        anim = GetComponent<Animator>();
         playerCanvas = GetComponentInChildren<Canvas>();
+        
         // Grab a component and keep a reference to it
         cc = GetComponent<CharacterController>();
         gm = GameObject.FindGameObjectWithTag("Game Manager").GetComponent<GameManager>();
@@ -32,6 +40,21 @@ public class Player : MonoBehaviour {
         if (!gm.GetPausedState())
         {        // float rotateSpeedX = Input.GetAxis("Mouse X");
 
+            anim.SetFloat("MoveDirX", moveDirection.x);
+            anim.SetFloat("MoveDirZ", moveDirection.z);
+
+            if (moveDirection.z > 0 || moveDirection.z < 0)
+            {
+                anim.Play("Walking");
+            }
+            if(moveDirection.x > 0)
+            {
+                anim.Play("Strafe Right");
+            }
+            if(moveDirection.x < 0)
+            {
+                anim.Play("Strafe Left");
+            }
             // Use the up and down keys to move the player along the Z-axis
             moveDirection = new Vector3(Input.GetAxis("Horizontal" + (playerId + 1)), 0, Input.GetAxis("Vertical" + (playerId + 1)));
             
